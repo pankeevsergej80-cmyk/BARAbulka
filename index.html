@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARAbulka - Moscow Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,900&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: white;
+            font-family: sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .fira-font {
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .header-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('1000070798.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top-image {
+            width: 150px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .brand-text {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        /* Блок времени */
+        #moscow-time {
+            font-size: 45px;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        /* Надпись про релиз */
+        .release-date {
+            font-size: 22px;
+            color: #888; /* Серый цвет */
+            letter-spacing: 1px;
+        }
+
+        .gameplay-section {
+            padding: 60px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #111;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .photo-card {
+            width: 90%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .photo-card img {
+            width: 100%;
+            border-radius: 15px;
+            border: 2px solid #333;
+            transition: transform 0.2s;
+        }
+
+        .photo-card img:active { transform: scale(0.96); }
+
+        .photo-caption {
+            font-size: 18px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+            background: #000;
+        }
+
+        .social-links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            color: #00aaff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="header-section">
+        <img src="1000065164.png" class="top-image" alt="Logo">
+        <div class="brand-text fira-font">BARAbulka</div>
+        
+        <div id="moscow-time" class="fira-font">00:00:00</div>
+        <div class="release-date fira-font">Релиз 15 Апреля</div>
+    </section>
+
+    <main class="gameplay-section">
+        <h2 class="section-title fira-font">Геймплей</h2>
+        <div class="photo-card">
+            <img src="1000070797.png" alt="Interface">
+            <span class="photo-caption fira-font">Приятный интерфейс.</span>
+        </div>
+        <div class="photo-card">
+            <img src="1000070772.png" alt="Bull">
+            <span class="photo-caption fira-font">Бегай от быка.</span>
+        </div>
+        <div class="photo-card">
+            <img src="1000070786.png" alt="Screamer">
+            <span class="photo-caption fira-font">А также смотри крутые анимации скримеров.</span>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-links-container">
+            <a href="#" class="social-link fira-font">Telegram Канал</a>
+            <a href="#" class="social-link fira-font">Разработчик</a>
+            <a href="#" class="social-link fira-font">Сообщество</a>
+            <a href="#" class="social-link fira-font">Чат Игроков</a>
+        </div>
+        <div class="fira-font" style="font-size: 14px; opacity: 0.4;">Redmi 14C Edition</div>
+    </footer>
+
+    <script>
+        function updateMoscowTime() {
+            const now = new Date();
+            // Настройка на Московское время (UTC+3)
+            const options = {
+                timeZone: 'Europe/Moscow',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            
+            const timeString = now.toLocaleTimeString('ru-RU', options);
+            document.getElementById('moscow-time').innerHTML = timeString;
+        }
+
+        // Обновляем каждую секунду
+        setInterval(updateMoscowTime, 1000);
+        updateMoscowTime(); // Запускаем сразу при загрузке
+    </script>
+
+</body>
+</html>
